@@ -26,17 +26,17 @@ See detailed results in:
 ## 🚀 Quick Start
 
 ### Option 1: Automated Setup
-```bash
+   ```bash
 # Clone this repository
 git clone https://github.com/bijanf/pdaf-climber-integration.git
-cd pdaf-climber-integration
+   cd pdaf-climber-integration
 
 # Follow detailed setup instructions
 cat SETUP_INSTRUCTIONS.md
-```
+   ```
 
 ### Option 2: Manual Setup
-```bash
+   ```bash
 # Clone this repository
 git clone https://github.com/bijanf/pdaf-climber-integration.git
 cd pdaf-climber-integration
@@ -48,8 +48,8 @@ tar -xzf PDAF_V2.0.tar.gz
 mv PDAF_V2.0 pdaf
 
 # Follow integration guide
-cat PDAF_INTEGRATION_GUIDE.md
-```
+   cat PDAF_INTEGRATION_GUIDE.md
+   ```
 
 ## 📋 Prerequisites
 
