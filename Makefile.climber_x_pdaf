@@ -1,0 +1,45 @@
+# CLIMBER-X Makefile with PDAF Integration
+# This Makefile includes PDAF libraries and modules
+
+# Compiler settings
+FC = ifort
+CC = icc
+MPIFC = mpif90
+MPICC = mpicc
+
+# Compiler flags
+FFLAGS = -O2 -xHost -ipo -no-prec-div -fp-model fast=2
+CFLAGS = -O2 -xHost -ipo
+LDFLAGS = -L$(MKLROOT)/lib/intel64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm -ldl
+
+# PDAF settings
+PDAF_DIR = /path/to/pdaf
+PDAF_ARCH = linux_intel
+PDAF_LIB = $(PDAF_DIR)/lib/libpdaf.a
+PDAF_INC = -I$(PDAF_DIR)/src/assimilation
+
+# NetCDF settings
+NETCDF_INC = $(shell nc-config --cflags)
+NETCDF_LIB = $(shell nc-config --libs)
+
+# CLIMBER-X source files (example - adjust as needed)
+CLIMBER_SOURCES = climber_x_main.F90 climber_x_model.F90 climber_x_pdaf_integration.F90
+CLIMBER_OBJECTS = $(CLIMBER_SOURCES:.F90=.o)
+
+# Main target
+climber_x_pdaf: $(CLIMBER_OBJECTS)
+	$(MPIFC) $(FFLAGS) -o $@ $^ $(PDAF_LIB) $(NETCDF_LIB) $(LDFLAGS)
+
+# Compilation rules
+%.o: %.F90
+	$(MPIFC) $(FFLAGS) $(PDAF_INC) $(NETCDF_INC) -c $< -o $@
+
+# Dependencies
+climber_x_main.o: climber_x_model.o climber_x_pdaf_integration.o
+climber_x_model.o: climber_x_pdaf_integration.o
+
+# Clean
+clean:
+	rm -f *.o *.mod climber_x_pdaf
+
+.PHONY: clean 

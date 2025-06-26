@@ -1,18 +1,98 @@
-# Ignore backup directories
-pdaf_integration_backup_*/
+# PDAF-CLIMBER-X Integration Repository .gitignore
+# This repository contains only integration scripts and documentation
 
-# Ignore compilation outputs
-compile_*.out
-compile_*.err
+# SLURM output files
+*.out
+*.err
+*_*.out
+*_*.err
 
-# Ignore object files and modules
+# Build artifacts
 *.o
 *.mod
 *.a
+*.so
+*.dylib
+build/
+lib/
+include/
+obj/
 
-# Ignore executables
-*.x
+# Executables
+model_pdaf
+PDAF_offline
+PDAF_online
+climber_x_pdaf
+climber.x
 
-# Ignore temporary files
+# Temporary files
 *~
 *.tmp
+*.temp
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+make.log
+compile.log
+build_error.log
+
+# Data files
+ens*ana.txt
+ens*for.txt
+state_*ana.txt
+state_*for.txt
+true*txt
+*.nc
+*.netcdf
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# External project directories (should be cloned separately)
+climber-x/
+CLIMBER-X/
+pdaf/
+PDAF/
+fesm-utils/
+
+# PDAF specific directories (if any get copied)
+tutorial/
+src/
+models/
+modelbindings/
+external/
+tests/
+templates/
+
+# Keep only integration files
+!make.arch/
+!*.sh
+!*.slurm
+!*.md
+!*.txt
+!*.F90
+!Makefile*
+!.gitignore
+!LICENSE*
+!README*
+!CITATION*
