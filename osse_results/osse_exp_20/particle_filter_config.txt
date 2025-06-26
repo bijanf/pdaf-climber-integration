@@ -1,0 +1,22 @@
+# Particle Filter Configuration
+# Filter type: 7 = Particle Filter
+filtertype 7
+
+# Ensemble size
+dim_ens 9
+
+# Number of assimilation steps
+nsteps 10
+
+# Localization radius (0 = no localization)
+radius 0
+
+# Output file prefix
+file_ens ens
+file_state state
+
+# Observation error variance
+rms_obs 0.1
+
+# Model error variance
+rms_mod 0.01
